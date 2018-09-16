@@ -1,23 +1,19 @@
 package pl.devkamil.app;
 
 import org.apache.commons.lang3.EnumUtils;
-
 import java.util.ArrayList;
 
 public class Calculations {
     private static final String REGEX_SPLIT = "\\s+";
 
-    public void calculationOfTheResult(ArrayList<String> arrayList){
-        String currentMathOperation = "";
-        Double currentNumber = 0.0;
-        String lastLine = arrayList.get(arrayList.size()-1);
+    public void calculationOfTheResult(ArrayList<String> listOfTheValues){
+        String lastLine = listOfTheValues.get(listOfTheValues.size()-1);
         double result = getNumberFromLineWithApplyWord(lastLine);
 
-
-        for (String x: arrayList) {
-            String [] readLines = x.split(REGEX_SPLIT);
-            currentMathOperation = readLines[0].trim().toUpperCase();
-            currentNumber = Double.parseDouble(readLines[1]);
+        for (String currentLine: listOfTheValues) {
+            String [] readLines = currentLine.split(REGEX_SPLIT);
+            String currentMathOperation = readLines[0].trim().toUpperCase();
+            Double currentNumber = Double.parseDouble(readLines[1]);
             result = mathematicalOperations(currentMathOperation, result, currentNumber);
         }
         System.out.println("The result is: " + result);
