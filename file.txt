@@ -1,0 +1,6 @@
+add 6
+multiply 3
+divide 2
+subtract 10
+apply 20
+asdasdasdsa 345345
