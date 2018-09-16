@@ -7,7 +7,23 @@ import java.util.ArrayList;
 public class Calculations {
     private static final String REGEX_SPLIT = "\\s+";
 
-    public double mathematicalOperations(String kindOfMathOperation, double currentValue, double newValueToMathOperation){
+    public void calculationOfTheResult(ArrayList<String> arrayList){
+        String currentMathOperation = "";
+        Double currentNumber = 0.0;
+        String lastLine = arrayList.get(arrayList.size()-1);
+        double result = getNumberFromLineWithApplyWord(lastLine);
+
+
+        for (String x: arrayList) {
+            String [] readLines = x.split(REGEX_SPLIT);
+            currentMathOperation = readLines[0].trim().toUpperCase();
+            currentNumber = Double.parseDouble(readLines[1]);
+            result = mathematicalOperations(currentMathOperation, result, currentNumber);
+        }
+        System.out.println("The result is: " + result);
+    }
+
+    private double mathematicalOperations(String kindOfMathOperation, double currentValue, double newValueToMathOperation){
         double newValueOfResult = currentValue;
         if (EnumUtils.isValidEnum(TypeOfCalculation.class, kindOfMathOperation)) {
             TypeOfCalculation typeOfCalculation = TypeOfCalculation.valueOf(kindOfMathOperation);
@@ -37,25 +53,7 @@ public class Calculations {
         return newValueOfResult;
     }
 
-    public void calculationOfTheResult(ArrayList<String> arrayList){
-        double result;
-        String [] readLines;
-        String currentMathOperation = "";
-        Double currentNumber = 0.0;
-        String lastLine = arrayList.get(arrayList.size()-1);
-        result = getNumberFromLineWithApplyWord(lastLine);
-
-
-        for (String x: arrayList) {
-            readLines = x.split(REGEX_SPLIT);
-            currentMathOperation = readLines[0].trim().toUpperCase();
-            currentNumber = Double.parseDouble(readLines[1]);
-            result = mathematicalOperations(currentMathOperation, result, currentNumber);
-        }
-        System.out.println("The result is: " + result);
-    }
-
-    public double getNumberFromLineWithApplyWord(String inputString){
+    private double getNumberFromLineWithApplyWord(String inputString){
         String numberFromApplyLine = inputString.split(REGEX_SPLIT)[1];
         return Double.parseDouble(numberFromApplyLine);
     }
