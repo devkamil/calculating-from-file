@@ -17,6 +17,13 @@
                     <target>7</target>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>pl.devkamil.app.Application</mainClass>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
