@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class InputLoader {
 
-    public ArrayList<String> readFile(String pathToFile){
+    public ArrayList<String> readFile(String pathToFile) {
         ArrayList<String> listWithValuesFromFile = new ArrayList<>();
         String line = "";
         boolean isFindWordApply = false;

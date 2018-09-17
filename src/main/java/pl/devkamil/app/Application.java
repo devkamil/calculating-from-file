@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Application {
 
-    public static void main (String[] args){
+    public static void main (String[] args) {
 
        Calculations calculations = new Calculations();
        InputLoader inputLoader = new InputLoader();
